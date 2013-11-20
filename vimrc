@@ -91,6 +91,17 @@ Bundle 'matchit.zip'
 " Gvim colorscheme
 Bundle 'Wombat'
 
+" for markdown
+Bundle 'plasticboy/vim-markdown'
+let g:vim_markdown_folding_disabled=1
+
+" 括号匹配高亮
+Bundle 'kien/rainbow_parentheses.vim'
+" 快速查找
+Bundle 'Lokaltog/vim-easymotion'
+" snippets
+Bundle 'SirVer/ultisnips'
+
 " zx's colorscheme
 Bundle 'altercation/vim-colors-solarized'
 
@@ -112,7 +123,7 @@ autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 
 
-" keyboard shortcuts
+"""""" keyboard shortcuts {{{
 let mapleader = ','
 "map <C-h> <C-w>h
 "map <C-j> <C-w>j
@@ -128,6 +139,7 @@ nmap <leader><space> :call whitespace#strip_trailing()<CR>
 nmap <leader>g :GitGutterToggle<CR>
 nmap <leader>c <Plug>Kwbd
 map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+"""""""" }}}
 
 " toggle Tagbar display
 map <F4> :TagbarToggle<CR>
@@ -211,15 +223,20 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extr
 let g:syntastic_python_checkers=['pyflakes']
 let g:syntastic_c_checkers=['ycm']
 
-"" Ultisnips 
-let g:UltiSnipsExpandTrigger="" 
-let g:UltiSnipsListSnippets=""
+""" Ultisnips  {
+let g:UltiSnipsUsePythonVersion = 2
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+"定义存放代码片段的文件夹 .vim/snippets下，使用自定义和默认的，将会的到全局，有冲突的会提示
+let g:UltiSnipsSnippetDirectories=["snippets", "bundle/UltiSnips/UltiSnips"]
+""" }
 
-"" emmet
+""" emmet  {
 let g:user_emmet_mode='a'    "enable all function in all mode."
+""" }
 
-""" ctrlp mapping "
-let g:ctrlp_map = ',,'
+""" ctrlp mapping {
+let g:ctrlp_map = '<leader>.'
 let g:ctrlp_open_multiple_files = 'v'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.rar
 let g:ctrlp_custom_ignore = {
@@ -232,10 +249,25 @@ let g:ctrlp_max_height=15
 let g:ctrlp_match_window_reversed=0
 let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
+""" }
 
-""" powerline 
+""" easy_motion { 
+let g:EasyMotion_leader_key = '<leader>'
+"""  }
+
+""" rainbow_parentheses {
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+""" } 
+
+""" powerline {
 set guifont=Consolas\ for\ Powerline
 let g:Powerline_colorscheme='solarized256'
 let g:Powerline_symbols = 'fancy'
 set laststatus=2
+"""" }
 

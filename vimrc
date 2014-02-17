@@ -37,6 +37,10 @@ if !filereadable(vundle_readme)
     let iCanHazVundle=0
 endif
 
+"设置标记一列的背景颜色和数字一行颜色一致
+hi! link SignColumn   LineNr
+hi! link ShowMarksHLl DiffAdd
+hi! link ShowMarksHLu DiffChange
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -58,6 +62,8 @@ Bundle 'scrooloose/syntastic'
 Bundle 'majutsushi/tagbar'
 " Code and files fuzzy finder
 Bundle 'kien/ctrlp.vim'
+" vim pecil
+Bundle 'reedes/vim-colors-pencil'
 
 " Git integration
 Bundle 'motemen/git-vim'
@@ -101,6 +107,9 @@ Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'Lokaltog/vim-easymotion'
 " snippets
 Bundle 'SirVer/ultisnips'
+
+" vim multiple cursors
+Bundle 'terryma/vim-multiple-cursors'
 
 " zx's colorscheme
 Bundle 'altercation/vim-colors-solarized'
@@ -236,7 +245,7 @@ let g:user_emmet_mode='a'    "enable all function in all mode."
 """ }
 
 """ ctrlp mapping {
-let g:ctrlp_map = '<leader>.'
+let g:ctrlp_map = ',.'
 let g:ctrlp_open_multiple_files = 'v'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.rar
 let g:ctrlp_custom_ignore = {
@@ -252,7 +261,7 @@ let g:ctrlp_follow_symlinks=1
 """ }
 
 """ easy_motion { 
-let g:EasyMotion_leader_key = '<leader>'
+let g:EasyMotion_leader_key = ','
 """  }
 
 """ rainbow_parentheses {
@@ -266,8 +275,18 @@ let g:rbpt_loadcmd_toggle = 0
 
 """ powerline {
 set guifont=Consolas\ for\ Powerline
+"set guifont=Courier\ Final\ Draft\ for\ Powerline
+"set guifont=Mensch\ for\ Powerline
 let g:Powerline_colorscheme='solarized256'
 let g:Powerline_symbols = 'fancy'
 set laststatus=2
 """" }
+
+""" mutli_cursors  {
+let g:multi_cursor_exit_from_visual_mode=1
+let g:multi_cursor_exit_from_insert_mode=1
+" Default highlighting (see help :highlight and help :highlight-link)
+highlight multiple_cursors_cursor term=reverse cterm=reverse gui=reverse
+highlight link multiple_cursors_visual Visual
+""" }
 
